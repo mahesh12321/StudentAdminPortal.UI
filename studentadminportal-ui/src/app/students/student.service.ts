@@ -7,13 +7,17 @@ import { student } from '../models/api-models/student.model';
   providedIn: 'root'
 })
 export class StudentService {
-  private baseApiUrl='https://localhost:44345/student';
+  private baseApiUrl='https://localhost:44345/student/';
 
   constructor(private httpService : HttpClient) { }
   getStudents():Observable<student[]>
   {
 
-    return this.httpService.get<student[]>(this.baseApiUrl);
+   return  this.httpService.get<student[]>(this.baseApiUrl);
 
+  }
+  getStudent(studentId :String):Observable<student>
+  {
+   return this.httpService.get<student>(this.baseApiUrl+studentId);
   }
 }
